@@ -1,0 +1,122 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+		<script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$(window).on("load",function(){
+					imgLocation();
+				});
+			});
+			
+			function imgLocation(){
+				var box = 	$(".box");
+				var boxWidth = box.eq(0).width();
+				var lineNum = Math.floor($(window).width()/boxWidth);
+				var boxArr = [];
+				box.each(function(index,element){
+					//console.log(index+","+element);
+					var boxHeight = box.eq(index).height();
+					if(index < lineNum){
+						boxArr[index] = boxHeight;
+					}else{
+						var minHeight = Math.min.apply(null,boxArr);
+						var minIndex = $.inArray(minHeight,boxArr);
+						$(element).css({
+							"position":"absolute",
+							"top":minHeight,
+							"left":box.eq(minIndex).position().left
+						});
+						boxArr[minIndex] += box.eq(index).height();
+					}
+				});
+			}
+		</script>
+		<style>
+			body{margin:0;padding:0;}
+			.box{position:relative;float:left;width:220px;}
+			.box img{width:100%;}
+			.content{padding:10px;border:1px solid #ccc;box-shadow:0 0 5px #ccc;border-radius:5px;}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<div class="box">
+				<div class="content">
+					<img src="images/1.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="content">
+					<img src="images/2.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="content">
+					<img src="images/15.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="content">
+					<img src="images/3.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="content">
+					<img src="images/4.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="content">
+					<img src="images/5.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="content">
+					<img src="images/6.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="content">
+					<img src="images/7.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="content">
+					<img src="images/8.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="content">
+					<img src="images/9.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="content">
+					<img src="images/10.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="content">
+					<img src="images/11.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="content">
+					<img src="images/12.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="content">
+					<img src="images/13.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="content">
+					<img src="images/14.jpg"/>
+				</div>
+			</div>
+			
+		</div>
+	</body>
+</html>
