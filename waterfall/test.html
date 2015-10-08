@@ -6,11 +6,33 @@
 			$(document).ready(function(){
 				$(window).on("load",function(){
 					imgLocation();
+					var dataImg = {"data":[{"src":"images/16.jpg"},{"src":"images/1.jpg"},{"src":"images/2.jpg"},{"src":"images/3.jpg"},{"src":"images/4.jpg"},{"src":"images/5.jpg"},{"src":"images/6.jpg"},{"src":"images/7.jpg"},{"src":"images/8.jpg"},{"src":"images/9.jpg"},{"src":"images/10.jpg"}]};
+					window.onscroll = function(){
+						//alert(scrollside());
+						if(scrollside()){
+							$.each(dataImg.data,function(index,ele){
+								var box = $("<div>").addClass("box").appendTo($("#container"));
+								var content = $("<div>").addClass("content").appendTo(box);
+								$("<img>").attr("src",$(ele).attr("src")).appendTo(content);
+							});
+						}
+						imgLocation();
+					};
 				});
 			});
+
+			function scrollside(){
+				var box = $(".box");
+				var documentHeight = $(document).height();		//文档的高度
+				var scrollHeight = $(window).scrollTop();		//卷去的高度
+				var visualHeight = document.body.offsetHeight;	//可视区域的高度
+				// 如果整个文档的高度 - 卷去的高度 <= 可视区域的高度，返回true
+				return ((documentHeight-scrollHeight) <= visualHeight) ? true : false;
+			}
+
 			
 			function imgLocation(){
-				var box = 	$(".box");
+				var box = $(".box");
 				var boxWidth = box.eq(0).width();
 				var lineNum = Math.floor($(window).width()/boxWidth);
 				var boxArr = [];
@@ -116,7 +138,46 @@
 					<img src="images/14.jpg"/>
 				</div>
 			</div>
-			
+			<div class="box">
+				<div class="content">
+					<img src="images/11.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="content">
+					<img src="images/12.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="content">
+					<img src="images/13.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="content">
+					<img src="images/14.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="content">
+					<img src="images/11.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="content">
+					<img src="images/12.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="content">
+					<img src="images/13.jpg"/>
+				</div>
+			</div>
+			<div class="box">
+				<div class="content">
+					<img src="images/14.jpg"/>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
